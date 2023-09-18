@@ -3,7 +3,7 @@
     "path": "~/QGIS/Projects/CDI/CDIGraphing/database.R",
     "project_path": "database.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "787202455",
     "contents": "",
     "dirty": false,
     "created": 1695017098502.0,
@@ -13,15 +13,16 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "7,50",
-        "scrollLine": "0"
+        "cursorPosition": "21,0",
+        "scrollLine": "0",
+        "softWrapLines": "false"
     },
     "folds": "",
-    "lastKnownWriteTime": 1694979003,
+    "lastKnownWriteTime": 1695025550,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1694979003,
+    "last_content_update": 1695025550598,
     "read_only": false,
     "read_only_alternatives": []
 }

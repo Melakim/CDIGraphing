@@ -18,3 +18,4 @@ years_list = list("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007"
                  "2016", "2017", "2018", "2019", "2020", "2021", "2022")
 
 base_folder_path = "C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIExcelAttributeTables/"
+

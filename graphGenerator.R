@@ -41,9 +41,12 @@ graphGenerator <- function(path, year, district) {
           legend.key = element_rect(colour = "grey95", linewidth = 0.25)) +
     scale_color_manual(values = c("#086619", "#619504", "#ffff2d", "#d7521c", "#bf1d21"))
 
-  # Exporting as a png file
-  ggsave(paste0("C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIGraphing/Graphs/", year, "_", district, ".png"),
+  # Exporting as a png file organised by year
+  ggsave(paste0("C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIGraphing/Graphs/Organised by Year/", year, "/",district, ".png"),
          height = 15, width = 20, unit = "cm", dpi = 150)
   
+  # Exporting as a png file organised by district
+  ggsave(paste0("C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIGraphing/Graphs/Organised by District/", district, "/", year, ".png"),
+         height = 15, width = 20, unit = "cm", dpi = 150)
 }
 
