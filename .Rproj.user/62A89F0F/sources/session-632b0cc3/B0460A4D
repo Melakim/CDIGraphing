@@ -1,0 +1,29 @@
+{
+    "id": "B0460A4D",
+    "path": "~/QGIS/Projects/CDI/CDIGraphing/graphGenerator.R",
+    "project_path": "graphGenerator.R",
+    "type": "r_source",
+    "hash": "3032342250",
+    "contents": "",
+    "dirty": false,
+    "created": 1694810580021.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "44,2",
+        "scrollLine": "14",
+        "softWrapLines": "false",
+        "docOutlineVisible": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1695023159,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1695023159687,
+    "read_only": false,
+    "read_only_alternatives": []
+}

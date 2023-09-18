@@ -1,0 +1,106 @@
+library (readxl)
+library(tidyr)
+
+years_lst = list("2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007",
+             "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015",
+             "2016", "2017", "2018", "2019", "2020", "2021", "2022")
+
+paths_lst_generator <- function(years_lst) {
+  base_folder_path = "C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIExcelAttributeTables/"
+  
+
+  paths_lst = list()
+  
+  for(year in years_lst) {
+    path = paste0(base_folder_path, year, ".xlsx")
+    paths_lst <- append(paths_lst, path)
+  }
+  
+  return(paths_lst)
+}
+
+paths_lst = paths_lst_generator(years_lst)
+
+districts_lst = list("Bulawayo",	"Harare",	"Buhera",	"Chimanimani",	
+                     "Chipinge",	"Makoni",	"Mutare",	"Mutasa",	"Nyanga",	
+                     "Bindura",	"Centenary",	"Guruve",	"Mazowe",	
+                     "Mount Darwin",	"Rushinga",	"Shamva",	"Chikomba",	
+                     "Goromonzi",	"Marondera",	"Mudzi",	"Murehwa",	
+                     "Mutoko",	"Seke",	"UMP",	"Wedza",	"Chegutu",	
+                     "Hurungwe",	"Kadoma",	"Kariba",	"Makonde",	"Zvimba",	
+                     "Bikita",	"Chiredzi",	"Chivi",	"Gutu",	"Masvingo",	
+                     "Mwenezi",	"Zaka",	"Binga",	"Bubi",	"Hwange",	"Lupane",
+                     "Nkayi",	"Tsholotsho",	"Umguza",	"Beitbridge",	"Bulilima ",
+                     "Gwanda",	"Insiza",	"Mangwe ",	"Matobo",	"Umzingwane",	
+                     "Chirumhanzu",	"Gokwe North",	"Gokwe South",	"Gweru",	
+                     "Kwekwe",	"Mberengwa",	"Shurugwi",	"Zvishavane")
+
+#df <- read_excel("C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIExcelAttributeTables/2003.xlsx")
+
+#districts_dict = list("Bulawayo"=df$Bulawayo,	"Harare"=df$Harare,	
+ #                     "Buhera"=df$Buhera,	"Chimanimani"=df$Chimanimani,	
+  #                    "Chipinge"=df$Chipinge,	"Makoni"=df$Makoni,	
+   #                   "Mutare"=df$Mutare,	"Mutasa"=df$Mutasa,	
+    #                  "Nyanga"=df$Nyanga,	"Bindura"=df$Bindura,	
+     #                 "Centenary"=df$Centenary,	"Guruve"=df$Guruve,	
+      #                "Mazowe"=df$Mazowe,	"Mount Darwin"=df$`Mount Darwin`,	
+       #               "Rushinga"=df$Rushinga,	"Shamva"=df$Shamva,	
+        #              "Chikomba"=df$Chikomba,	"Goromonzi"=df$Goromonzi,	
+         #             "Marondera"=df$Marondera,	"Mudzi"=df$Mudzi,	
+          #            "Murehwa"=df$Murehwa,	"Mutoko"=df$Mutoko,	"Seke"=df$Seke,	
+           #           "UMP"=df$UMP,	"Wedza"=df$Wedza,	"Chegutu"=df$Chegutu,	
+            #          "Hurungwe"=df$Hurungwe,	"Kadoma"=df$Kadoma,	
+             #         "Kariba"=df$Kariba,	"Makonde"=df$Makonde,	
+              #        "Zvimba"=df$Zvimba,	"Bikita"=df$Bikita,	
+               #       "Chiredzi"=df$Chiredzi,	"Chivi"=df$Chivi,	
+                #      "Gutu"=df$Gutu,	"Masvingo"=df$Masvingo,	
+                 #     "Mwenezi"=df$Mwenezi,	"Zaka"=df$Zaka,	"Binga"=df$Binga,	
+                  #    "Bubi"=df$Bubi,	"Hwange"=df$Hwange,	"Lupane"=df$Lupane,	
+                   #   "Nkayi"=df$Nkayi,	"Tsholotsho"=df$Tsholotsho,	
+                    #  "Umguza"=df$Umguza,	"Beitbridge"=df$Beitbridge,	
+                     # "Bulilima "=df$Bulilima ,	"Gwanda"=df$Gwanda,	
+                      #"Insiza"=df$Insiza,	"Mangwe "=df$Mangwe ,	
+                      #"Matobo"=df$Matobo,	"Umzingwane"=df$Umzingwane,	
+                      #"Chirumhanzu"=df$Chirumhanzu,	
+                      #"Gokwe North"=df$`Gokwe North`,	
+                      #"Gokwe South"=df$`Gokwe South`,	"Gweru"=df$Gweru,	
+                      #"Kwekwe"=df$Kwekwe,	"Mberengwa"=df$Mberengwa,	
+                      #"Shurugwi"=df$Shurugwi,	"Zvishavane"=df$Zvishavane)		
+
+
+yr_counter = 0
+for (address in paths_lst) {
+  yr_counter = yr_counter + 1
+  print(address)
+  for (district in districts_lst) {
+    year = years_lst[[yr_counter]]
+    df <- read_excel(address)
+    #print(df)
+    
+    df <- df %>%
+      mutate(month = month(parse_date_time(month, orders = "B"), label = TRUE, abbr = TRUE))
+    #print(df)
+    #View(df)
+    
+    # Open a pdf file
+    png(paste0("C:/Users/Melakim/Documents/QGIS/Projects/CDI/CDIGraphing/Graphs/", year, "_", district, ".png")) 
+    
+    #print(df$month)
+    print(df[["Bulawayo"]])
+    
+    df <- df %>%
+      ggplot(aes(month, .data[[district]], group = 1))+
+      geom_point(alpha = 0.5)+
+      geom_line(color = "red",linewidth = 2.5)+
+      labs(title = "title", x = "x", y = "y")+
+      theme_bw()
+      #theme_get()
+    
+    
+    print(df)  
+    dev.off() 
+    
+    break
+} 
+  
+}
